@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>_UNDERGROUND_D&B_ACADEMY_</title>
+    <style>
+        /* Base styling */
+        :root {
+            --background: #000000;
+            --foreground: #ffffff;
+            --accent: #00ff00;
+            --secondary: #333333;
+            --terminal-green: #00ff00;
+            --terminal-red: #ff0000;
+            --font-mono: 'Courier New', monospace;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+            font-family: var(--font-mono);
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header and Navigation */
+        header {
+            border-bottom: 1px solid var(--foreground);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+        }
+        
+        .nav-links a {
+            color: var(--foreground);
+            text-decoration: none;
+            margin-left: 30px;
+            position: relative;
+            padding: 5px 0;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background: transparent;
+            color: var(--foreground);
+            border: 1px solid var(--foreground);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--foreground);
+            color: var(--background);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--foreground);
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZGVmcz4KPHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxwYXRoIGQ9Ik0gMTAgMCBMIDAgMCAwIDEwIiBmaWxsPSJub25lIiBzdHJva2U9IiMxMTExMTEiIHN0cm9rZS13aWR0aD0iMSIvPgo8L3BhdHRlcm4+CjwvZGVmcz4KPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIgLz4KPC9zdmc+');
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            position: relative;
+        }
+        
+        .limited-offer {
+            display: inline-block;
+            border: 1px solid var(--foreground);
+            padding: 5px 15px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        
+        .ascii-art {
+            font-family: monospace;
+            white-space: pre;
+            line-height: 1.2;
+            margin: 20px auto;
+            display: inline-block;
+            text-align: left;
+            font-size: 12px;
+            color: var(--accent);
+        }
+        
+        .hero h1 {
+            font-size: 40px;
+            margin: 20px 0;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .countdown-item {
+            border: 1px solid var(--foreground);
+            padding: 10px;
+            min-width: 80px;
+        }
+        
+        .countdown-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            border-bottom: 1px solid var(--foreground);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 30px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 1px;
+            background-color: var(--accent);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            border: 1px solid var(--foreground);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+        }
+        
+        .feature-icon {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        /* Courses Section */
+        .courses {
+            padding: 100px 0;
+            border-bottom: 1px solid var(--foreground);
+        }
+        
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .course-card {
+            border: 1px solid var(--foreground);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+        }
+        
+        .course-header {
+            border-bottom: 1px solid var(--foreground);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .course-header h4 {
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+        
+        .course-content {
+            padding: 20px;
+        }
+        
+        .course-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        .course-description {
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+        
+        .course-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            opacity: 0.5;
+            margin-right: 10px;
+        }
+        
+        .current-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        .rating {
+            letter-spacing: 3px;
+        }
+        
+        .course-cta {
+            width: 100%;
+            background: transparent;
+            color: var(--foreground);
+            border: 1px solid var(--foreground);
+            padding: 12px;
+            cursor: pointer;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+        
+        .course-cta:hover {
+            background-color: var(--foreground);
+            color: var(--background);
+        }
+        
+        .vip-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--foreground);
+            color: var(--background);
+            padding: 5px 10px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            border-bottom: 1px solid var(--foreground);
+        }
+        
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            border: 1px solid var(--foreground);
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .testimonial:last-child {
+            margin-bottom: 0;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-info {
+            margin-left: 20px;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        .quote-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 40px;
+            opacity: 0.1;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--foreground);
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .cta-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+        
+        .main-cta {
+            background: transparent;
+            color: var(--foreground);
+            border: 1px solid var(--foreground);
+            padding: 15px 35px;
+            cursor: pointer;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            font-size: 18px;
+            display: inline-block;
+        }
+        
+        .main-cta:hover {
+            background-color: var(--foreground);
+            color: var(--background);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--foreground);
+            text-decoration: none;
+            transition: color 0.3s;
+            opacity: 0.7;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            opacity: 1;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: var(--foreground);
+            font-size: 18px;
+            transition: color 0.3s;
+            opacity: 0.7;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+            opacity: 1;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            opacity: 0.5;
+        }
+        
+        /* Glitch effect */
+        .glitch {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch::before {
+            left: 2px;
+            text-shadow: -1px 0 var(--accent);
+            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        }
+        
+        .glitch::after {
+            left: -2px;
+            text-shadow: 1px 0 var(--accent);
+            animation: glitch-anim-2 3s infinite linear alternate-reverse;
+        }
+        
+        @keyframes glitch-anim-1 {
+            0% {
+                clip-path: inset(30% 0 68% 0);
+            }
+            20% {
+                clip-path: inset(80% 0 18% 0);
+            }
+            40% {
+                clip-path: inset(54% 0 14% 0);
+            }
+            60% {
+                clip-path: inset(40% 0 43% 0);
+            }
+            80% {
+                clip-path: inset(16% 0 61% 0);
+            }
+            100% {
+                clip-path: inset(89% 0 7% 0);
+            }
+        }
+        
+        @keyframes glitch-anim-2 {
+            0% {
+                clip-path: inset(21% 0 45% 0);
+            }
+            20% {
+                clip-path: inset(96% 0 3% 0);
+            }
+            40% {
+                clip-path: inset(62% 0 3% 0);
+            }
+            60% {
+                clip-path: inset(57% 0 17% 0);
+            }
+            80% {
+                clip-path: inset(19% 0 44% 0);
+            }
+            100% {
+                clip-path: inset(70% 0 29% 0);
+            }
+        }
+
+        /* Terminal Effect */
+        .terminal-text {
+            position: relative;
+            display: inline-block;
+            color: var(--accent);
+            padding-right: 0.5em;
+        }
+        
+        .terminal-text::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 0.5em;
+            background-color: var(--accent);
+            animation: cursor-blink 1s step-end infinite;
+        }
+        
+        @keyframes cursor-blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+        
+        /* Matrix Rain */
+        .matrix-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--background);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--foreground);
+            border-radius: 0;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .nav-links a {
+                margin-left: 0;
+            }
+            
+            .hero h1 {
+                font-size: 30px;
+            }
+            
+            .ascii-art {
+                font-size: 8px;
+            }
+            
+            .countdown-timer {
+                flex-wrap: wrap;
+            }
+            
+            .countdown-item {
+                flex-basis: calc(50% - 10px);
+            }
+            
+            .courses-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Matrix Background -->
+    <canvas id="matrix" class="matrix-container"></canvas>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">[_D&B<span>_ACADEMY_</span>]</div>
+                <nav class="nav-links">
+                    <a href="#courses">[COURSES]</a>
+                    <a href="#features">[FEATURES]</a>
+                    <a href="#testimonials">[TESTIMONIALS]</a>
+                </nav>
+                <button class="cta-button">LOGIN</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="limited-offer">[30% DISCOUNT_ACTIVE]</div>
+                <div class="ascii-art">
+                ███████╗██╗   ██╗████████╗██╗   ██╗██████╗ ███████╗    ██████╗  █████╗ ███████╗███████╗
+                ██╔════╝██║   ██║╚══██╔══╝██║   ██║██╔══██╗██╔════╝    ██╔══██╗██╔══██╗██╔════╝██╔════╝
+                █████╗  ██║   ██║   ██║   ██║   ██║██████╔╝█████╗      ██████╔╝███████║███████╗███████╗
+                ██╔══╝  ██║   ██║   ██║   ██║   ██║██╔══██╗██╔══╝      ██╔══██╗██╔══██║╚════██║╚════██║
+                ██║     ╚██████╔╝   ██║   ╚██████╔╝██║  ██║███████╗    ██████╔╝██║  ██║███████║███████║
+                ╚═╝      ╚═════╝    ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝
+                </div>
+                <h1 class="glitch" data-text="MASTER THE ART OF DRUM & BASS">MASTER THE ART OF DRUM & BASS</h1>
+                <p>Learn to create professional-quality tracks with our comprehensive 2-month interactive course. Available in English & Spanish.</p>
+                
+                <div class="countdown-timer">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">02</div>
+                        <div>DAYS</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">11</div>
+                        <div>HOURS</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">45</div>
+                        <div>MINUTES</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">32</div>
+                        <div>SECONDS</div>
+                    </div>
+                </div>
+                
+                <button class="cta-button">START_YOUR_JOURNEY</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>WHY_CHOOSE_OUR_COURSE</h2>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">[01]</div>
+                    <h3>20 COMPREHENSIVE LESSONS</h3>
+                    <p>From music theory to mixing and mastering, our structured curriculum covers everything you need to know about Drum & Bass production.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">[02]</div>
+                    <h3>INTERACTIVE WORKSHOPS</h3>
+                    <p>Collaborate with other students through remix exchanges, sound design battles, and group production sessions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">[03]</div>
+                    <h3>INDUSTRY-STANDARD TECHNIQUES</h3>
+                    <p>Learn the same production methods used by leading Drum & Bass artists to create professional-quality tracks.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">[04]</div>
+                    <h3>LAUNCH STRATEGY TRAINING</h3>
+                    <p>Understand how to market your music with our simulation exercises and learn how to get your tracks on major platforms.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">[05]</div>
+                    <h3>DUAL LANGUAGE OPTIONS</h3>
+                    <p>Choose between our English or Spanish courses to learn in the language you're most comfortable with.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">[06]</div>
+                    <h3>PERSONALIZED FEEDBACK</h3>
+                    <p>Get detailed feedback on your tracks from instructors and fellow students to accelerate your progress.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>OUR_COURSES</h2>
+            </div>
+            
+            <div class="courses-container">
+                <div class="course-card">
+                    <div class="course-header">
+                        <h4>D&B PRODUCTION MASTERCLASS</h4>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-details">
+                            <span>20 LESSONS • 2 MONTHS</span>
+                            <span>ENGLISH</span>
+                        </div>
+                        <p class="course-description">Our flagship course teaches you everything from fundamental D&B theory to advanced production techniques. Includes interactive sessions and launch strategy training.</p>
+                        <div class="course-price">
+                            <div>
+                                <span class="old-price">$499</span>
+                                <span class="current-price">$349</span>
+                            </div>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                        <button class="course-cta">[ENROLL_NOW]</button>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-header">
+                        <h4>MASTERCLASS DE PRODUCCIÓN D&B</h4>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-details">
+                            <span>20 LECCIONES • 2 MESES</span>
+                            <span>ESPAÑOL</span>
+                        </div>
+                        <p class="course-description">Nuestro curso principal te enseña todo, desde teoría fundamental de D&B hasta técnicas avanzadas de producción. Incluye sesiones interactivas y estrategias de lanzamiento.</p>
+                        <div class="course-price">
+                            <div>
+                                <span class="old-price">$499</span>
+                                <span class="current-price">$349</span>
+                            </div>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                        <button class="course-cta">[INSCRÍBETE_AHORA]</button>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="vip-badge">VIP</div>
+                    <div class="course-header">
+                        <h4>VIP PRODUCER MENTORSHIP</h4>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-details">
+                            <span>20 GROUP LESSONS + 4 PRIVATE SESSIONS</span>
+                            <span>ENGLISH/SPANISH</span>
+                        </div>
+                        <p class="course-description">The ultimate D&B production experience. Get our complete course plus four exclusive one-on-one sessions with the instructor to receive personalized feedback.</p>
+                        <div class="course-price">
+                            <div>
+                                <span class="old-price">$1999</span>
+                                <span class="current-price">$1749</span>
+                            </div>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                        <button class="course-cta">[SECURE_VIP_ACCESS]</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>USER_FEEDBACK</h2>
+            </div>
+            
+            <div class="testimonials-container">
+                <div class="testimonial">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">The interactive elements of this course made all the difference. The Launch Strategy Simulation helped me understand the business side of music production, and I've already signed my first track to a label!</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>ALEX_THOMPSON</h4>
+                            <p>LONDON, UK</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">Aprender en español marcó la diferencia
