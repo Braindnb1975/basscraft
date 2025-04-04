@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&B Production Academy | Master the Art of Drum and Bass</title>
+    <style>
+        :root {
+            --primary: #7d68df;
+            --secondary: #ff6600;
+            --dark: #151522;
+            --light: #f8f9fa;
+            --gray: #e9ecef;
+            --success: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(21, 21, 34, 0.95);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #e65c00;
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to bottom, rgba(21, 21, 34, 0.8), rgba(21, 21, 34, 0.95)), url('images/hero-bg.jpg') center/cover no-repeat;
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: #ccc;
+        }
+        
+        .hero-cta {
+            background-color: var(--primary);
+            padding: 14px 32px;
+            font-size: 18px;
+            box-shadow: 0 4px 20px rgba(125, 104, 223, 0.4);
+        }
+        
+        .hero-cta:hover {
+            background-color: #6a58c9;
+        }
+        
+        /* Countdown Timer */
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .countdown-item {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 15px 20px;
+            border-radius: 8px;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .countdown-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .countdown-label {
+            font-size: 14px;
+            color: #bbb;
+        }
+        
+        /* Limited Offer Badge */
+        .limited-offer {
+            background-color: var(--secondary);
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: #1a1a2e;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .section-title p {
+            color: #bbb;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: #232334;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .feature-card p {
+            color: #bbb;
+            font-size: 16px;
+        }
+        
+        /* Course Section */
+        .courses {
+            padding: 100px 0;
+        }
+        
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .course-card {
+            background-color: #232334;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .course-image {
+            height: 200px;
+            background-color: #333;
+            position: relative;
+        }
+        
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .course-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7));
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+        
+        .course-overlay h4 {
+            font-size: 24px;
+        }
+        
+        .course-content {
+            padding: 25px;
+        }
+        
+        .course-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        .course-description {
+            margin-bottom: 25px;
+            color: #ddd;
+        }
+        
+        .course-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .course-cta {
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .course-cta:hover {
+            background-color: #6a58c9;
+        }
+        
+        .vip-badge {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background-color: var(--secondary);
+            color: white;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 30px;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background-color: #1a1a2e;
+        }
+        
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            background-color: #232334;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .testimonial:last-child {
+            margin-bottom: 0;
+        }
+        
+        .testimonial-text {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            color: #ddd;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #333;
+            margin-right: 15px;
+            overflow: hidden;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        .quote-icon {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 60px;
+            color: rgba(125, 104, 223, 0.1);
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: #232334;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            font-size: 18px;
+        }
+        
+        .faq-question:hover {
+            background-color: #2a2a40;
+        }
+        
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: #bbb;
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        /* Payment Options Section */
+        .payment-options {
+            padding: 100px 0;
+            background-color: #1a1a2e;
+        }
+        
+        .payment-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #232334;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .payment-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .payment-tab {
+            flex: 1;
+            background-color: #2a2a40;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            min-width: 120px;
+            transition: background-color 0.3s;
+        }
+        
+        .payment-tab.active {
+            background-color: var(--primary);
+        }
+        
+        .payment-content {
+            overflow-x: auto;
+        }
+        
+        .payment-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        .payment-table th {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #3a3a50;
+            color: var(--primary);
+        }
+        
+        .payment-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #3a3a50;
+        }
+        
+        .payment-table tr.featured {
+            background-color: rgba(255, 102, 0, 0.1);
+        }
+        
+        .course-title {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .course-subtitle {
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        .old-price {
+            color: #bbb;
+            text-decoration: line-through;
+        }
+        
+        .current-price {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--secondary);
+        }
+        
+        .savings {
+            color: var(--success);
+        }
+        
+        .select-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .select-btn.featured {
+            background-color: var(--secondary);
+        }
+        
+        .payment-guarantees {
+            background-color: #1a1a2e;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .guarantee-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .guarantee-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .guarantee-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .guarantee-title {
+            font-weight: 600;
+        }
+        
+        .guarantee-description {
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(to right, var(--primary), #5a47ae);
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .main-cta {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .main-cta:hover {
+            background-color: #e65c00;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0e0e17;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: #bbb;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #2a2a40;
+            color: #888;
+            font-size: 14px;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            margin-top: 20px;
+        }
+        
+        .newsletter input {
+            background-color: #232334;
+            border: 1px solid #2a2a40;
+            padding: 12px;
+            width: 100%;
+            border-radius: 6px;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .newsletter button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter button:hover {
+            background-color: #6a58c9;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark);
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .navbar {
+                position: relative;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .countdown-timer {
+                flex-wrap: wrap;
+            }
+            
+            .countdown-item {
+                flex-basis: calc(50% - 20px);
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section-title h2 {
+                font-size: 26px;
+            }
+            
+            .testimonial {
+                padding: 25px;
+            }
+            
+            .feature-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">D&B<span>Academy</span></div>
+                <button class="mobile-menu-btn">☰</button>
+                <div class="nav-links">
+                    <a href="#courses">Courses</a>
+                    <a href="#features">Features</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                <button class="cta-button">Enroll Now</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <span class="limited-offer">Limited Time Offer: 30% OFF</span>
+            <h1>Master the Art of Drum & Bass Production</h1>
+            <p>Learn to create professional-quality tracks with our comprehensive 2-month interactive course. Available in English & Spanish.</p>
+            
+            <div class="countdown-timer">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">02</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">11</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">45</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">32</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+            
+            <button class="cta-button hero-cta">Start Your D&B Journey Today</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Our Course?</h2>
+                <p>We've designed a learning experience that combines technical skills with interactive collaboration to make you a better producer faster.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎛️</div>
+                    <h3>20 Comprehensive Lessons</h3>
+                    <p>From music theory to mixing and mastering, our structured curriculum covers everything you need to know about Drum & Bass production.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Interactive Workshops</h3>
+                    <p>Collaborate with other students through remix exchanges, sound design battles, and group production sessions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔊</div>
+                    <h3>Industry-Standard Techniques</h3>
+                    <p>Learn the same production methods used by leading Drum & Bass artists to create professional-quality tracks.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Launch Strategy Training</h3>
+                    <p>Understand how to market your music with our simulation exercises and learn how to get your tracks on major platforms.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Available in Two Languages</h3>
+                    <p>Choose between our English or Spanish courses to learn in the language you're most comfortable with.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Personalized Feedback</h3>
+                    <p>Get detailed feedback on your tracks from instructors and fellow students to accelerate your progress.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Courses</h2>
+                <p>Choose the course that fits your needs and start your journey to becoming a professional Drum & Bass producer.</p>
+            </div>
+            
+            <div class="courses-container">
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="https://placehold.co/400x200/333/666?text=D%26B+Course" alt="D&B Production Course English">
+                        <div class="course-overlay">
+                            <h4>D&B Production Masterclass</h4>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-details">
+                            <span>20 Lessons • 2 Months</span>
+                            <span>English</span>
+                        </div>
+                        <p class="course-description">Our flagship course teaches you everything from fundamental D&B theory to advanced production techniques. Includes interactive sessions and launch strategy training.</p>
+                        <div class="course-price">
+                            <div>
+                                <del style="color: #777;">$499</del>
+                                <div class="price">$349</div>
+                            </div>
+                            <div>⭐⭐⭐⭐⭐ (4.9/5)</div>
+                        </div>
+                        <button class="course-cta">Enroll Now</button>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="https://placehold.co/400x200/333/666?text=Curso+en+Español" alt="D&B Production Course Spanish">
+                        <div class="course-overlay">
+                            <h4>Masterclass de Producción D&B</h4>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-details">
+                            <span>20 Lecciones • 2 Meses</span>
+                            <span>Español</span>
+                        </div>
+                        <p class="course-description">Nuestro curso principal te enseña todo, desde teoría fundamental de D&B hasta técnicas avanzadas de producción. Incluye sesiones interactivas y estrategias de lanzamiento.</p>
+                        <div class="course-price">
+                            <div>
+                                <del style="color: #777;">$499</del>
+                                <div class="price">$349</div>
+                            </div>
+                            <div>⭐⭐⭐⭐⭐ (4.8/5)</div>
+                        </div>
+                        <button class="course-cta">Inscríbete Ahora</button>
+                    </div>
+                </div>
+                
+                <div class="course-card" style="position: relative; overflow: visible;">
+                    <div class="vip-badge">VIP ACCESS</div>
+                    <div class="course-image">
+                        <img src="https://placehold.co/400x200/333/666?text=VIP+Mentorship" alt="VIP Producer Mentorship">
+                        <div class="course-overlay">
+                            <h4>VIP Producer Mentorship</h4>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-details">
+                            <span>20 Group Lessons + 4 Private Sessions</span>
+                            <span>English/Spanish</span>
+                        </div>
+                        <p class="course-description">The ultimate D&B production experience. Get our complete course plus four exclusive one-on-one sessions with the instructor to receive personalized feedback and accelerate your progress.</p>
+                        <div class="course-price">
+                            <div>
+                                <del style="color: #777;">$1999</del>
+                                <div class="price">$1749</div>
+                            </div>
+                            <div>⭐⭐⭐⭐⭐ (5/5)</div>
+                        </div>
+                        <button class="course-cta" style="background-color: var(--secondary);">Secure VIP Spot</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Payment Options Section -->
+    <section class="payment-options" id="payment-options">
+        <div class="container">
+            <div class="section-title">
+                <h2>Flexible Payment Options</h2>
+                <p>Choose the payment plan that works best for you.</p>
+            </div>
+            
+            <div class="payment-container">
+                <div class="payment-tabs">
+                    <button class="payment-tab active">One-Time Payment</button>
+                    <button class="payment-tab">3-Month Plan</button>
+                    <button class="payment-tab">6-Month Plan</button>
+                </div>
+                
+                <div class="payment-content">
+                    <table class="payment-table">
+                        <thead>
+                            <tr>
+                                <th>Course Option</th>
+                                <th>Regular Price</th>
+                                <th>Special Offer</th>
+                                <th>You Save</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="course-title">D&B Production Masterclass</div>
+                                    <div class="course-subtitle">Group course with 20 lessons over 2 months</div>
+                                </td>
+                                <td class="old-price">$499</td>
+                                <td class="current-price">$349</td>
+                                <td class="savings">$150 (30% off)</td>
+                                <td>
+                                    <button class="select-btn">Select</button>
+                                </td>
+                            </tr>
+                            <tr class="featured">
+                                <td>
+                                    <div class="course-title">VIP Producer Mentorship</div>
+                                    <div class="course-subtitle">Complete course + 4 private one-on-one sessions</div>
+                                </td>
+                                <td class="old-price">$1999</td>
+                                <td class="current-price">$1749</td>
+                                <td class="savings">$250 (12% off)</td>
+                                <td>
+                                    <button class="select-btn featured">Select VIP</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="course-title">Launch Strategy Workshop</div>
+                                    <div class="course-subtitle">Focused workshop with 5 lessons over 2 weeks</div>
+                                </td>
+                                <td class="old-price">$199</td>
+                                <td class="current-price">$149</td>
+                                <td class="savings">$50 (25% off)</td>
+                                <td>
+                                    <button class="select-btn">Select</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="payment-guarantees">
+                        <div class="guarantee-item">
+                            <div class="guarantee-icon">✓</div>
+                            <div>
+                                <div class="guarantee-title">Satisfaction Guaranteed</div>
+                                <div class="guarantee-description">14-day money-back guarantee if you're not completely satisfied</div>
+                            </div>
+                        </div>
+                        <div class="guarantee-item">
+                            <div class="guarantee-icon">🔒</div>
+                            <div>
+                                <div class="guarantee-title">Secure Payments</div>
+                                <div class="guarantee-description">All payments processed securely through Stripe or PayPal</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Students Say</h2>
+                <p>Don't just take our word for it. Hear from our community of successful producers.</p>
+            </div>
+            
+            <div class="testimonials-container">
+                <div class="testimonial">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">The interactive elements of this course made all the difference. The Launch Strategy Simulation helped me understand the business side of music production, and I've already signed my first track to a label!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://placehold.co/60x60/333/666" alt="Student Avatar">
+                        </div>
+                        <div class="author-info">
+                            <h4>Alex Thompson</h4>
+                            <p>London, UK</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">Aprender en español marcó la diferencia para mí. Las sesiones de producción colaborativa me ayudaron a desarrollar mi propio estilo y ahora tengo más confianza en mis habilidades como productor.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://placehold.co/60x60/333/666" alt="Student Avatar">
+                        </div>
+                        <div class="author-info">
+                            <h4>Carlos Rodríguez</h4>
+                            <p>Barcelona, Spain</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">The Sound Design Battle sessions were incredible! I learned so much from other students, and the feedback on my tracks helped me level up my production skills faster than I thought possible.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://placehold.co/60x60/333/666" alt="Student Avatar">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Toronto, Canada</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to the most common questions about our courses.</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do I need prior music production experience?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While some basic familiarity with a DAW (Digital Audio Workstation) is helpful, our course is designed to accommodate beginners. We start with fundamentals and progressively move to more advanced techniques.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What equipment do I need?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You'll need a computer with a DAW installed (Ableton Live, FL Studio, Logic Pro, etc.), headphones, and an internet connection. A MIDI keyboard is optional but recommended.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How interactive are the courses?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Very! We include collaborative sessions, sample pack challenges, remix exchanges, and sound design battles. You'll be actively engaged with other students and instructors throughout the course.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What's included in the VIP Producer Mentorship?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our premium VIP offering includes everything in the standard course plus:</p>
+                        <ul style="list-style-type: disc; margin-left: 20px; margin-top: 10px;">
+                            <li>Four private 60-minute one-on-one sessions with the instructor</li>
+                            <li>Personalized feedback on your tracks</li>
+                            <li>Custom production roadmap tailored to your goals</li>
+                            <li>Priority support for technical questions</li>
+                            <li>Lifetime access to course updates</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What payment options do you offer?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer several payment options to fit your needs:</p>
+                        <ul style="list-style-type: disc; margin-left: 20px; margin-top: 10px;">
+                            <li>One-time payment (with special discount)</li>
+                            <li>3-month installment plan</li>
+                            <li>6-month installment plan</li>
+                            <li>Group discounts for 3+ enrollments</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Las clases en español son traducciones o contenido original?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nuestro curso en español es contenido original creado específicamente para estudiantes de habla hispana, no simplemente una traducción del curso en inglés.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your D&B Production Skills?</h2>
+                <p>Join our community of producers and take your tracks to the next level. Limited seats available for our next cohort.</p>
+                <button class="main-cta">Enroll Now & Save 30%</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Sample Packs</a></li>
+                        <li><a href="#">Free Tutorials</a></li>
+                        <li><a href="#">Production Tips</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@dnbacademy.com">info@dnbacademy.com</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Partnerships</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="#" title="Facebook">📱</a>
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="Twitter">🐦</a>
+                        <a href="#" title="YouTube">📺</a>
+                        <a href="#" title="SoundCloud">🔊</a>
+                    </div>
+                    
+                    <div class="newsletter">
+                        <h3>Newsletter</h3>
+                        <input type="email" placeholder="Your email address">
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 D&B Production Academy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for interactivity -->
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+                
+                // Toggle plus/minus icon
+                const icon = question.querySelector('span:last-child');
+                icon.textContent = faqItem.classList.contains('active') ? '-' : '+';
+            });
+        });
+        
+        // Payment Tabs
+        document.querySelectorAll('.payment-tab').forEach((tab, index) => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.payment-tab').forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Update payment table based on selected tab
+                // This would be connected to your actual payment processing system
+                // For now, we'll just log which tab was clicked
+                console.log(`Payment option ${index + 1} selected`);
+            });
+        });
+        
+        // Countdown Timer
+        function updateCountdown() {
+            // Set the date we're counting down to (2 days from now)
+            const countdownDate = new Date();
+            countdownDate.setDate(countdownDate.getDate() + 2);
+            
+            // Get current time
+            const now = new Date().getTime();
+            
+            // Find the distance between now and the countdown date
+            const distance = countdownDate - now;
+            
+            // Time calculations for days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // Update the countdown display
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            
+            // If the countdown is finished, display a message
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+            }
+        }
+        
+        // Update the countdown every second
+        updateCountdown();
+        const countdown = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
